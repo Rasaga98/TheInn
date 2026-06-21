@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>The Inn</title>
+<link>https://github.com/Rasaga98/TheInn.git/</link>
+<atom:link href="https://github.com/Rasaga98/TheInn.git/index.xml" rel="self" type="application/rss+xml"/>
+<description>A blog built with Quarto</description>
+<generator>quarto-1.9.37</generator>
+<lastBuildDate>Fri, 19 Jun 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>La regresión lineal múltiple</title>
+  <dc:creator>Raúl S.G.</dc:creator>
+  <link>https://github.com/Rasaga98/TheInn.git/posts/linear/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="regresión-lineal-múltiple" class="level2">
+<h2 class="anchored" data-anchor-id="regresión-lineal-múltiple">Regresión lineal múltiple</h2>
+<p>La regresión lineal múltiple es una técnica estadística utilizada para estudiar la relación entre una variable dependiente y varias variables explicativas. Su objetivo principal es analizar cómo cambia una variable de interés cuando varían simultáneamente distintos factores que pueden influir sobre ella.</p>
+<p>A diferencia de una simple descripción de los datos, la regresión lineal múltiple permite avanzar hacia una interpretación más analítica: no solo resume la información, sino que intenta explicar patrones, estimar relaciones y valorar la importancia relativa de cada variable dentro de un modelo.</p>
+</section>
+<section id="ideal-general-del-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="ideal-general-del-modelo">Ideal general del modelo</h2>
+<p>El modelo parte de una relación tal que:</p>
+<p><span style="color: black;"><img src="https://latex.codecogs.com/png.latex?%0AY%20=%20%5Cbeta_0%20+%20%5Cbeta_1X_1%20+%20%5Cbeta_2X_2%20+%20%5Ccdots%20+%20%5Cbeta_kX_k%20+%20u%0A"></span></p>
+<p>donde:</p>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?Y"> es la variable dependiente o variable que se quiere explicar.</li>
+<li><img src="https://latex.codecogs.com/png.latex?X_1,%20X_2,%20%5Cldots,%20X_k"> son las variables independientes o explicativas.</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cbeta_0"> es la constante del modelo.</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cbeta_1,%20%5Cbeta_2,%20%5Cldots,%20%5Cbeta_k"> son los coeficientes que miden el efecto de cada variable explicativa sobre <img src="https://latex.codecogs.com/png.latex?Y">.</li>
+<li><img src="https://latex.codecogs.com/png.latex?u"> es el término de error, que recoge todos los factores no incluidos explícitamente en el modelo.</li>
+</ul>
+<p>La palabra “lineal” no significa necesariamente que las variables tengan que aparecer siempre en forma simple, sino que el modelo es lineal en los parámetros. Por ejemplo, pueden introducirse logaritmos, cuadrados o transformaciones, siempre que los coeficientes mantengan una estructura lineal.</p>
+</section>
+<section id="interpretación-de-los-coeficientes" class="level2">
+<h2 class="anchored" data-anchor-id="interpretación-de-los-coeficientes">Interpretación de los coeficientes</h2>
+<p>Cada coeficiente mide el efecto parcial de una variable explicativa sobre la variable dependiente, manteniendo constantes las demás variables del modelo. Por ejemplo, si se estudia el salario en función de la educación, la experiencia y el sector laboral, el coeficiente de la educación indicaría cómo varía el salario ante un aumento de la educación, suponiendo constantes la experiencia y el sector.</p>
+<p>Esta idea de “mantener constantes los demás factores” es clave. La regresión múltiple permite aislar parcialmente relaciones que, en la realidad, suelen aparecer mezcladas.</p>
+</section>
+<section id="estimación-del-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="estimación-del-modelo">Estimación del modelo</h2>
+<p>Normalmente, los coeficientes se estiman mediante el método de mínimos cuadrados ordinarios. Este procedimiento busca la recta (o hiperplano, en el caso de varias variables) que minimiza la suma de los errores al cuadrado entre los valores observados y los valores predichos por el modelo.</p>
+<p>El resultado es una ecuación estimada:</p>
+<p><span style="color: black;"><img src="https://latex.codecogs.com/png.latex?%0A%5Chat%7BY%7D%20=%20%5Chat%7B%5Cbeta%7D_0%20+%20%5Chat%7B%5Cbeta%7D_1X_1%20+%20%5Ccdots%20+%20%5Chat%7B%5Cbeta%7D_kX_k%0A"></span></p>
+<p>La diferencia entre el valor real y el valor estimado se denomina residuo. Analizar los residuos es fundamental para valorar si el modelo se ajusta razonablemente a los datos.</p>
+</section>
+<section id="bondad-del-ajuste" class="level2">
+<h2 class="anchored" data-anchor-id="bondad-del-ajuste">Bondad del ajuste</h2>
+<p>Una vez estimado el modelo, interesa saber hasta qué punto las variables explicativas ayudan a comprender la variabilidad de <img src="https://latex.codecogs.com/png.latex?Y">.</p>
+<p>Una medida habitual es el coeficiente de determinación, <img src="https://latex.codecogs.com/png.latex?R%5E2">, que indica qué proporción de la variabilidad de la variable dependiente queda explicada por el modelo. Sin embargo, en regresión múltiple conviene prestar atención también al <img src="https://latex.codecogs.com/png.latex?R%5E2"> ajustado, porque penaliza la inclusión de variables innecesarias.</p>
+<p>Un <img src="https://latex.codecogs.com/png.latex?R%5E2"> alto no garantiza que el modelo sea correcto. Puede haber problemas de especificación, variables omitidas, relaciones espurias o una mala interpretación causal.</p>
+</section>
+<section id="inferencia-en-la-regresión" class="level2">
+<h2 class="anchored" data-anchor-id="inferencia-en-la-regresión">Inferencia en la regresión</h2>
+<p>La regresión lineal múltiple no se limita a calcular coeficientes. También permite realizar inferencia estadística sobre ellos.</p>
+<p>Esto implica preguntarse si los efectos estimados son estadísticamente relevantes o si podrían deberse simplemente al azar muestral. Para ello se utilizan:</p>
+<ul>
+<li><span style="color: black;">Contrastes de hipótesis</span>, especialmente sobre si un coeficiente es igual a cero.</li>
+<li><span style="color: black;">Intervalos de confianza</span>, que ofrecen un rango plausible de valores para el verdadero parámetro poblacional.</li>
+<li><span style="color: black;">Estadísticos t</span>, para valorar la significatividad individual de cada variable.</li>
+<li><span style="color: black;">Contrastes F</span>, para evaluar la significatividad conjunta del modelo o de un grupo de variables.</li>
+</ul>
+<p>Así, la regresión conecta la información muestral con conclusiones más generales sobre la población, siempre bajo un margen de incertidumbre.</p>
+</section>
+<section id="supuestos-básicos" class="level2">
+<h2 class="anchored" data-anchor-id="supuestos-básicos">Supuestos básicos</h2>
+<p>Para que las estimaciones sean fiables, el modelo necesita cumplir ciertos supuestos. Entre los más importantes están:</p>
+<ul>
+<li>Relación lineal entre los parámetros del modelo.</li>
+<li>Ausencia de correlación perfecta entre las variables explicativas.</li>
+<li>Media condicional nula del error.</li>
+<li>Homocedasticidad, es decir, varianza constante de los errores.</li>
+<li>Independencia de las observaciones.</li>
+<li>Normalidad de los errores, especialmente relevante en muestras pequeñas para realizar inferencia clásica.</li>
+</ul>
+<p>Cuando estos supuestos se incumplen, los coeficientes pueden ser sesgados, ineficientes o difíciles de interpretar.</p>
+</section>
+<section id="problemas-habituales" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-habituales">Problemas habituales</h2>
+<p>En la práctica, la regresión lineal múltiple exige precaución. Algunos problemas frecuentes son:</p>
+<ul>
+<li><span style="color: black;">Multicolinealidad</span>: cuando varias variables explicativas están muy relacionadas entre sí.</li>
+<li><span style="color: black;">Heterocedasticidad</span>: cuando la varianza del error no es constante.</li>
+<li><span style="color: black;">Variables omitidas</span>: cuando se deja fuera una variable relevante.</li>
+<li><span style="color: black;">Endogeneidad</span>: cuando alguna variable explicativa está relacionada con el término de error.</li>
+<li><span style="color: black;">Sobreajuste</span>: cuando se incluyen demasiadas variables y el modelo pierde capacidad explicativa general.</li>
+</ul>
+<p>Por eso, una regresión no debe interpretarse mecánicamente. Requiere criterio estadístico, conocimiento del fenómeno estudiado y revisión crítica de los resultados.</p>
+</section>
+<section id="utilidad-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="utilidad-práctica">8. Utilidad práctica</h2>
+<p>La regresión lineal múltiple es una herramienta central en economía, empresa, finanzas, sociología, salud, educación y análisis de mercados. Permite estudiar relaciones entre variables, hacer predicciones, evaluar hipótesis y apoyar la toma de decisiones.</p>
+<p>Su fuerza reside en que combina descripción, estimación e inferencia. Permite pasar de los datos observados a una interpretación estructurada de la realidad, siempre reconociendo que todo modelo es una simplificación.</p>
+<p>En definitiva, la regresión lineal múltiple es una de las técnicas más importantes del análisis estadístico porque permite estudiar fenómenos complejos donde intervienen varios factores a la vez. Bien utilizada, no solo ayuda a predecir, sino también a comprender mejor cómo se relacionan las variables dentro de un problema concreto.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>linear</category>
+  <category>regression</category>
+  <category>analysis</category>
+  <category>statistics</category>
+  <guid>https://github.com/Rasaga98/TheInn.git/posts/linear/</guid>
+  <pubDate>Fri, 19 Jun 2026 22:00:00 GMT</pubDate>
+  <media:content url="https://github.com/Rasaga98/TheInn.git/posts/linear/linear.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
+<item>
+  <title>Hablemos de la estadística descriptiva</title>
+  <dc:creator>Raúl S.G.</dc:creator>
+  <link>https://github.com/Rasaga98/TheInn.git/posts/descriptiva/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="una-primera-lectura-de-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="una-primera-lectura-de-los-datos">Una primera lectura de los datos</h2>
+<p>El objetivo de la estadística descriptiva es el de recoger, ordenar, resumir y representar los datos; no buscando sacar conclusiones generales, si no describir de forma clara un conjunto de información disponible.</p>
+<p>Previo a aplicar técnicas más complejas, como contrastes de hipótesis o plantear modelos, esta cara de la estadística funciona como el primer paso. La puerta de entrada al análisis estadístico.</p>
+<p>Esta permite transformar datos desordenados en información útil. Por ejemplo, si analizamos las notas de una clase, los ingresos de un grupo de hogares o las ventas de una empresa, la estadística descriptiva nos ayuda a respodner preguntas básicas: cuál es el valor medio, cuánto varían los datos, qué valores son más frecuentes o si hay diferencias visibles entres grupos.</p>
+</section>
+<section id="conceptos-básicos" class="level2">
+<h2 class="anchored" data-anchor-id="conceptos-básicos">Conceptos básicos</h2>
+<p>Todo análisis descriptivo parte de algunos conceptos fundamentales. Estos son:</p>
+<ul>
+<li><span style="color: black;">Población</span>: Conjunto total de elementos que queremos estudiar. Cada elemento de esa población es un individuo o unidad estadística.</li>
+<li><span style="color: black;">Muestra</span>: Subconjunto de es población.</li>
+<li><span style="color: black;">Variable</span>: Característica observada de cada individuo: edad, peso, género, renta, etc. Cada posible valor o categoría que puede tomar una variable recibe el nombre de modalidad. Las variables pueden ser de dos grandes tipos:
+<ul>
+<li><span style="color: black;">Variables cualitativas</span>: expresan categorías o cualidades. Pueden ser nominales, cuando no existe orden entre sus categorías, como color de pelo o género; u ordinales, cuando sí existe una jerarquía, como nivel bajo, medio o alto.</li>
+<li><span style="color: black;">Variables cuantitativas</span>: expresan cantidades numéricas. Pueden ser discretas, cuando toman valores contables, como número de hermanos; o continuas, cuando pueden tomar infinitos valores dentro de un intervalo, como altura, peso o renta.</li>
+</ul></li>
+</ul>
+<p>Esta distinción es importante porque el tipo de variable determina qué medidas y gráficos conviene utilizar.</p>
+</section>
+<section id="tablas-de-frecuencia" class="level2">
+<h2 class="anchored" data-anchor-id="tablas-de-frecuencia">Tablas de frecuencia</h2>
+<p>Una de las herramientas más básicas de la estadística descriptiva es la tabla de frecuencias, la cual muestra cuántas veces aparece cada valor o categoría. De ella nacen diversos conceptos capitales:</p>
+<ul>
+<li><span style="color: black;">Frecuencia absoluta</span>: Indica el número de veces que aparece una modalidad.</li>
+<li><span style="color: black;">Frecuencia relativa</span>: expresa esa la cantidad anterior como proporción o porcentaje del total.</li>
+<li><span style="color: black;">Frecuencia acumulada</span>: Puede calcularse en variables ordenadas o cuantitativas, e inica cuántas observaciones se sitúan por debajo o hasta determinado valor.</li>
+</ul>
+<p>Estas tablas permiten ver rápidamente qué categorías predominan, cuáles son minoritarias y cómo se reparte la información.</p>
+</section>
+<section id="medidas-de-posición" class="level2">
+<h2 class="anchored" data-anchor-id="medidas-de-posición">Medidas de posición</h2>
+<p>Las medidas de posición indican dónde se sitúan los datos. Las más conocidas son la media, la mediana y la moda.</p>
+<ul>
+<li><span style="color: black;">Media</span>: Es el promedio de los valores. Es muy útil, aunque puede verse afectada por valores extremos.</li>
+<li><span style="color: black;">Mediana</span>: Es el valor central de la distribución: deja la mitad de los datos por debajo y la otra mitad por encima.</li>
+<li><span style="color: black;">Moda</span>: Es el valor que aparece con mayor frecuencia.</li>
+</ul>
+<p>También existen medidas como los cuartiles, deciles y percentiles, que dividen la distribución en partes y permiten saber la posición relativa de una observación dentro del conjunto.</p>
+</section>
+<section id="medidas-de-dispersión" class="level2">
+<h2 class="anchored" data-anchor-id="medidas-de-dispersión">Medidas de dispersión</h2>
+<p>No basta con saber dónde está el centro de los datos; también necesitamos saber cuánto varían. Para eso sirven las medidas de dispersión.</p>
+<p>Entre las más importantes están el rango, la varianza, la desviación típica, el rango intercuartílico y el coeficiente de variación.</p>
+<ul>
+<li><span style="color: black;">Rango</span>: Mide la diferencia entre el valor máximo y el mínimo.</li>
+<li><span style="color: black;">Varianza y desviación típica</span>: Muestran cuánto se alejan los datos respecto de la media.</li>
+<li><span style="color: black;">Rando intercuartílico</span>: Se centra en la parte central de la distribución, reduciendo la influencia de valores extremos.</li>
+</ul>
+<p>Una idea clave es que dos conjuntos de datos pueden tener la misma media, pero comportarse de manera muy distinta si uno está mucho más disperso que el otro.</p>
+</section>
+<section id="forma-de-la-distribución" class="level2">
+<h2 class="anchored" data-anchor-id="forma-de-la-distribución">Forma de la distribución</h2>
+<p>La estadística descriptiva también permite estudiar la forma de los datos. Dos elementos importantes son la asimetría y la curtosis.</p>
+<ul>
+<li><span style="color: black;">Asimetría</span>: Indica si los datos se distribuyen de manera equilibrada alrededor del centro o si se concentran más hacia un lado. Una distribución puede ser simétrica, asimétrica hacia la derecha o asimétrica hacia la izquierda.</li>
+<li><span style="color: black;">Curtosis</span>: Informa sobre el grado de concentración de los datos alrededor del centro y sobre el peso de las colas de la distribución. Ayuda a detectar si hay muchos valores extremos o si los datos están muy concentrados.</li>
+</ul>
+</section>
+<section id="gráficos-descriptivos" class="level2">
+<h2 class="anchored" data-anchor-id="gráficos-descriptivos">Gráficos descriptivos</h2>
+<p>Los gráficos son esenciales porque permiten visualizar de forma rápida la estructura de los datos.</p>
+<p>Para variables cualitativas suelen utilizarse gráficos de barras o diagramas de sectores. Para variables cuantitativas son habituales los histogramas, los diagramas de caja y bigotes y los gráficos de tallo y hojas.</p>
+<p>Un buen gráfico no debe limitarse a decorar la información: debe ayudar a comprenderla. Permite detectar patrones, comparar grupos, observar concentraciones y localizar posibles valores anómalos.</p>
+</section>
+<section id="aplicaciones" class="level2">
+<h2 class="anchored" data-anchor-id="aplicaciones">Aplicaciones</h2>
+<p>La estadística descriptiva se utiliza en prácticamente cualquier ámbito donde existan datos. En economía y empresa permite analizar ventas, ingresos, costes, riesgos o comportamiento de clientes. En educación ayuda a estudiar el rendimiento académico. En salud permite describir la distribución de enfermedades o características de pacientes. También se aplica en deporte, agricultura, marketing, comunicación o investigación social.</p>
+<p>Su utilidad está en que ofrece una primera aproximación objetiva a la realidad observada.</p>
+</section>
+<section id="conclusión" class="level2">
+<h2 class="anchored" data-anchor-id="conclusión">Conclusión</h2>
+<p>La estadística descriptiva es una herramienta fundamental para convertir datos en información comprensible. A través de tablas, gráficos y medidas numéricas, permite resumir grandes cantidades de información, identificar patrones, comparar grupos y detectar anomalías.</p>
+<p>Su importancia reside en que todo análisis serio empieza por una buena descripción. Antes de explicar, predecir o tomar decisiones, es necesario conocer bien los datos. La estadística descriptiva cumple precisamente esa función: ofrecer una visión ordenada, clara y rigurosa de la información disponible.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>statistics</category>
+  <category>analysis</category>
+  <category>descriptive</category>
+  <guid>https://github.com/Rasaga98/TheInn.git/posts/descriptiva/</guid>
+  <pubDate>Wed, 17 Jun 2026 22:00:00 GMT</pubDate>
+  <media:content url="https://github.com/Rasaga98/TheInn.git/posts/descriptiva/descriptiva.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
+<item>
+  <title>Sobre la inferencia</title>
+  <dc:creator>Raúl S.G.</dc:creator>
+  <link>https://github.com/Rasaga98/TheInn.git/posts/inferencia/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="inferencia-estadística-decidir-bajo-incertidumbre" class="level2">
+<h2 class="anchored" data-anchor-id="inferencia-estadística-decidir-bajo-incertidumbre">Inferencia estadística: decidir bajo incertidumbre</h2>
+<p>La inferencia estadística es la parte de la estadística que permite ir más allá de los datos observados. Mientras la estadística descriptiva organiza, resume y representa la información disponible, la inferencia utiliza una muestra para extraer conclusiones sobre una población más amplia. Su rasgo central es que trabaja en un contexto de incertidumbre: no ofrece verdades absolutas, sino conclusiones acompañadas de una medida de fiabilidad.</p>
+</section>
+<section id="de-la-muestra-a-la-población" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-muestra-a-la-población">De la muestra a la población</h2>
+<p>La inferencia parte de una idea sencilla: muchas veces no podemos observar toda la población, así que trabajamos con una muestra. A partir de esa muestra intentamos aproximarnos a características desconocidas de la población, llamadas parámetros. Por ejemplo, si queremos conocer la media salarial de un sector, la proporción de clientes satisfechos o la diferencia de rendimiento entre dos grupos, normalmente no analizamos a todos los individuos posibles. Tomamos una muestra y, mediante técnicas inferenciales, tratamos de generalizar los resultados.</p>
+<p>La clave está en que la muestra no se interpreta como un simple conjunto de datos aislados, sino como una vía para aproximarse a una realidad más amplia.</p>
+</section>
+<section id="estimación-puntual" class="level2">
+<h2 class="anchored" data-anchor-id="estimación-puntual">Estimación puntual</h2>
+<p>La estimación puntual consiste en calcular un único valor numérico a partir de la muestra para aproximar un parámetro desconocido de la población. Ese valor se obtiene mediante un estimador, es decir, una función de los datos muestrales que no depende del parámetro desconocido. El problema es que no todos los estimadores son igual de buenos. Para valorar su calidad se buscan propiedades como la insesgadez, la eficiencia, la consistencia y la suficiencia.</p>
+<p>Un buen estimador debe aproximarse al verdadero valor del parámetro, cometer errores pequeños, mejorar al aumentar el tamaño muestral y aprovechar adecuadamente la información contenida en los datos.</p>
+</section>
+<section id="métodos-de-estimación" class="level2">
+<h2 class="anchored" data-anchor-id="métodos-de-estimación">Métodos de estimación</h2>
+<p>Dos procedimientos clásicos para construir estimadores son el método de máxima verosimilitud y el método de los momentos:</p>
+<ul>
+<li><span style="color: black;">Método de máxima verosimilitud</span>: Busca el valor del parámetro que hace más probable haber observado los datos de la muestra. En otras palabras, entre los posibles valores del parámetro, se elige aquel que maximiza la probabilidad de que aparezcan los datos obtenidos. Habitualmente se trabaja con el logaritmo de la función de verosimilitud, porque facilita los cálculos sin cambiar el punto en el que se alcanza el máximo.</li>
+<li><span style="color: black;">Método de los momentos</span>: Se basa en igualar características poblacionales con sus equivalentes muestrales. Por ejemplo, si el valor esperado de una variable depende de un parámetro desconocido, se puede igualar ese valor esperado a la media muestral y despejar el parámetro.</li>
+</ul>
+</section>
+<section id="intervalos-de-confianza" class="level2">
+<h2 class="anchored" data-anchor-id="intervalos-de-confianza">Intervalos de confianza</h2>
+<p>La estimación puntual tiene una limitación importante: ofrece un solo número, pero no indica cuánta precisión tiene esa estimación. Para corregir esto se utilizan los intervalos de confianza. Un intervalo de confianza proporciona un rango de valores dentro del cual se espera que se encuentre el parámetro poblacional con un determinado nivel de confianza. Por ejemplo, en lugar de decir que la media estimada es 50, podríamos decir que, con un 95% de confianza, la media poblacional se encuentra entre 47 y 53. La idea de fondo es que, muchas veces, es preferible acertar aproximadamente que fallar con una precisión engañosa. El intervalo reconoce explícitamente la incertidumbre del proceso inferencial y la incorpora al resultado.</p>
+</section>
+<section id="contraste-de-hipótesis" class="level2">
+<h2 class="anchored" data-anchor-id="contraste-de-hipótesis">Contraste de hipótesis</h2>
+<p>El <strong>contraste de hipótesis</strong> aborda la inferencia desde otra perspectiva: en lugar de estimar directamente un parámetro, se plantea una afirmación sobre él y se evalúa si los datos ofrecen suficiente evidencia para rechazarla.</p>
+<p>El procedimiento básico es:</p>
+<ol type="1">
+<li>Formular una hipótesis nula <img src="https://latex.codecogs.com/png.latex?H_0">, que se considera provisionalmente verdadera.</li>
+<li>Formular una hipótesis alternativa <img src="https://latex.codecogs.com/png.latex?H_1">, que representa la posibilidad contraria o diferente.</li>
+<li>Elegir un nivel de significación, normalmente 0,05 o 0,01.</li>
+<li>Seleccionar un estadístico de prueba.</li>
+<li>Comparar el resultado con una región crítica o valor de referencia.</li>
+<li>Tomar una decisión: rechazar o no rechazar <img src="https://latex.codecogs.com/png.latex?H_0">.</li>
+</ol>
+<p>Un aspecto importante es que no rechazar la hipótesis nula no significa demostrar que sea verdadera. Significa, más bien, que los datos disponibles no ofrecen evidencia suficiente para descartarla.</p>
+</section>
+<section id="relación-entre-intervalos-y-contrastes" class="level2">
+<h2 class="anchored" data-anchor-id="relación-entre-intervalos-y-contrastes">Relación entre intervalos y contrastes</h2>
+<p>Los intervalos de confianza y los contrastes de hipótesis están estrechamente relacionados. De hecho, una forma intuitiva de conectar ambos enfoques es la siguiente: si un valor hipotético del parámetro queda fuera del intervalo de confianza correspondiente, ese valor puede considerarse poco compatible con los datos muestrales al nivel de confianza elegido.</p>
+<p>Por tanto, ambos métodos responden a la misma preocupación central: cómo razonar sobre una población desconocida a partir de una muestra limitada.</p>
+</section>
+<section id="la-lógica-general-de-la-inferencia" class="level2">
+<h2 class="anchored" data-anchor-id="la-lógica-general-de-la-inferencia">La lógica general de la inferencia</h2>
+<p>La inferencia estadística puede resumirse como un proceso en tres movimientos:</p>
+<ol type="1">
+<li>Partir de datos muestrales obtenidos de una población.</li>
+<li>Construir estimadores, intervalos o pruebas estadísticas utilizando modelos probabilísticos.</li>
+<li>Extraer conclusiones sobre parámetros, diferencias, proporciones o hipótesis poblacionales, siempre reconociendo el margen de incertidumbre.</li>
+</ol>
+<p>Su utilidad práctica es enorme: permite tomar decisiones en economía, empresa, finanzas, salud, educación, investigación social o análisis de mercados cuando no se dispone de información completa.</p>
+<p>En definitiva, la inferencia estadística no elimina la incertidumbre, pero permite trabajar con ella de forma sistemática, cuantificada y rigurosa.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>statistics</category>
+  <category>inferential</category>
+  <category>analysis</category>
+  <guid>https://github.com/Rasaga98/TheInn.git/posts/inferencia/</guid>
+  <pubDate>Tue, 16 Jun 2026 22:00:00 GMT</pubDate>
+  <media:content url="https://github.com/Rasaga98/TheInn.git/posts/inferencia/inferencia.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
+</channel>
+</rss>
